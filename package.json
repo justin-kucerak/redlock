@@ -6,6 +6,25 @@
   "types": "dist/index.d.ts",
   "author": "Justin Kucerak",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/justin-kucerak/redlock.git"
+  },
+  "homepage": "https://github.com/justin-kucerak/redlock#readme",
+  "keywords": [
+    "redis",
+    "redlock",
+    "distributed lock",
+    "typescript",
+    "locking",
+    "synchronization"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prepublishOnly": "npm run build"
+  },
   "dependencies": {
     "@types/jest": "^29.5.13",
     "jest": "^29.7.0",
