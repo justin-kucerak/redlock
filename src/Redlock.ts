@@ -52,7 +52,7 @@ export class Redlock extends EventEmitter {
   ): Promise<number> {
     const lockPromises = this.clients.map(async (client) => {
       try {
-        const result = await client.set(resource, lockId, { nx: true, px: ttl });
+        const result = await client.set(resource, lockId, { px: ttl });
         return result === 'OK' ? 1 : 0;
       } catch (error) {
         this.emit('lockError', { client, error });

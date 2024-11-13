@@ -2,23 +2,18 @@ import { RedisClient } from '../RedisClient';
 import Redis from 'ioredis';
 
 export class IORedisAdapter implements RedisClient {
-  private client: Redis.Redis;
+  private client: Redis;
 
-  constructor(client: Redis.Redis) {
+  constructor(client: Redis) {
     this.client = client;
   }
 
   async set(
     key: string,
     value: string,
-    options?: { nx?: boolean; px?: number }
+    options: { px: number }
   ): Promise<'OK' | null> {
-    const args = [key, value];
-
-    if (options?.nx) args.push('NX');
-    if (options?.px) args.push('PX', options.px.toString());
-
-    const result = await this.client.set(...args);
+    const result = await this.client.set(key, value, 'PX', options.px.toString(), 'NX');
     return result as 'OK' | null;
   }
 

@@ -11,11 +11,12 @@ export class NodeRedisAdapter implements RedisClient {
   async set(
     key: string,
     value: string,
-    options?: { nx?: boolean; px?: number }
+    options?: { px?: number }
   ): Promise<'OK' | null> {
-    const setOptions: any = {};
+    const setOptions: any = {
+      NX: true
+    };
 
-    if (options?.nx) setOptions.NX = true;
     if (options?.px) setOptions.PX = options.px;
 
     const result = await this.client.set(key, value, setOptions);
