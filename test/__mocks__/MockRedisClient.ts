@@ -6,12 +6,12 @@ export class MockRedisClient implements RedisClient {
   async set(
     key: string,
     value: string,
-    options?: { nx?: boolean; px?: number }
+    options?: { px?: number }
   ): Promise<'OK' | null> {
     const currentTime = Date.now();
     const existing = this.data.get(key);
 
-    if (options?.nx && existing && existing.expiresAt > currentTime) {
+    if (existing && existing.expiresAt > currentTime) {
       // Key exists and is not expired
       return null;
     }
