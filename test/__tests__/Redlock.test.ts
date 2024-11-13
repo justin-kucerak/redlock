@@ -37,8 +37,8 @@ describe('Redlock', () => {
 
   test('should fail to acquire lock after max retries and emit error', async () => {
     // Simulate clients already having locks
-    await clients[0].set(resource, 'existing_lock', { nx: true, px: ttl });
-    await clients[1].set(resource, 'existing_lock', { nx: true, px: ttl });
+    await clients[0].set(resource, 'existing_lock', { px: ttl });
+    await clients[1].set(resource, 'existing_lock', { px: ttl });
     jest.spyOn(clients[2], 'set').mockRejectedValue(new Error());
 
     const errorSpy = jest.spyOn(redlock, 'emit');
