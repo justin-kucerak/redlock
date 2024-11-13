@@ -1,0 +1,13 @@
+services:
+  redis1:
+    image: redis:6
+    ports:
+      - "63791:6379"
+  redis2:
+    image: redis:6
+    ports:
+      - "63792:6379"
+  redis3:
+    image: redis:6
+    ports:
+      - "63793:6379"
