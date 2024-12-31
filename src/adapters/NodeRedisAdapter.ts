@@ -20,7 +20,7 @@ export class NodeRedisAdapter implements RedisClient {
     if (options?.px) setOptions.PX = options.px;
 
     const result = await this.client.set(key, value, setOptions);
-    return result;
+    return result as 'OK' | null;
   }
 
   async eval(
