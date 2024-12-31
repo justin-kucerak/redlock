@@ -1,6 +1,6 @@
 {
   "name": "@justin-kucerak/redlock",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A TypeScript implementation of the Redlock algorithm for distributed locking with Redis.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
